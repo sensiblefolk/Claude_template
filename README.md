@@ -81,6 +81,84 @@ You don't need to memorize commands. Simply ask Claude to:
 - "Mark this task as complete"
 - "What tasks are left in this feature?"
 
+## Commands
+
+### Initial Setup
+
+#### /create-app-design-document
+
+Create high-level application design documentation.
+
+- **Always asks about project stage first** (Pre-MVP, MVP, Production, Enterprise)
+- Updates project status in CLAUDE.md
+- Focuses on business value and user benefits
+- Saves to `.taskmaster/docs/app-design-document.md`
+
+#### /create-tech-stack
+
+Document technical implementation details.
+
+- Analyzes package.json, configs, and code structure
+- Documents exact versions and dependencies
+- Covers frontend, backend, database, and infrastructure
+- Saves to `.taskmaster/docs/tech-stack.md`
+
+### Task Management
+
+#### /prd
+
+Create a Product Requirements Document for new features.
+
+- Analyzes existing codebase for context
+- Asks clarifying questions about the feature
+- Creates structured PRD with context and requirements
+- Saves to `.taskmaster/docs/prd-[feature-name].md`
+
+#### /parse
+
+Convert PRD into Task Master tasks.
+
+- Creates new feature tag
+- **Switches to the tag** (critical step)
+- Parses PRD into structured tasks
+- Ready for development with `/next`
+
+#### /next
+
+Get the next available task.
+
+#### /done
+
+Complete the current task.
+
+### Maintenance & Updates
+
+#### /sync-app-design-document
+
+Update existing app design after changes.
+
+#### /sync-tech-stack
+
+Update tech documentation after changes.
+
+#### /sync-rules
+
+Sync Cursor rules to `CLAUDE.md`.
+
+### Research
+
+#### /debug
+
+Systematic debugging process.
+
+#### /architect
+
+Deep architectural planning for complex features.
+
+#### /ux
+
+Create UX/UI design documentation.
+
 ## Tips
 
 ### Context Management
@@ -97,15 +175,9 @@ You don't need to memorize commands. Simply ask Claude to:
 - "Create auth feature tag" - New feature context
 - "Switch to payments tag" - Change context
 
-### Custom Commands
+### Creating Custom Commands
 
-Create your own slash commands by adding them to `.claude/commands/`:
-
-```bash
-/debug                        # Debug mode
-/architect                    # Architect mode
-/ux                           # UX mode
-```
+Create your own slash commands by adding them to `.claude/commands/`
 
 ### Multi-task and Multi-feature Development
 

@@ -2,26 +2,30 @@
 
 ## Project Overview
 
-</create-app-design-document note="Replace with the project description">
+<!-- Run /create-app-design-document to generate content for this section -->
+<!-- Then replace this comment with your project description -->
 
 - `.taskmaster/docs/app-design-document.md` - App design document
 - `.taskmaster/docs/tech-stack.md` - Tech stack, architecture
 
 ## Project Status
 
-**Current Stage**: </create-app-design-document example="Pre-MVP (highest velocity to ship)">
+**Current Stage**: <!-- Add stage: Example: Pre-MVP (highest velocity to ship) -->
 
 ### DO Care About (Production-Ready Foundation)
 
-- </create-app-design-document>
+<!-- Add your stage-specific priorities here -->
+<!-- Example: - **Security**: Authentication, authorization, session management -->
 
 ### DO NOT Care About (Skip for Velocity)
 
-- </create-app-design-document>
+<!-- Add what to skip for your current stage -->
+<!-- Example: - **Breaking Changes**: Not deployed yet, refactor freely -->
 
 ### Development Approach
 
-- </create-app-design-document>
+<!-- Add your development approach based on project stage -->
+<!-- Example: - **Focus**: Working implementation over perfect code -->
 
 ## Commands
 
@@ -29,15 +33,20 @@
 
 - `pnpm typecheck` - Run TypeScript type checking (must pass without errors)
 - `pnpm lint` - Run ESLint
-- DO NOT run `pnpm dev` or `pnpm build` or `pnpm start` - these are manual commands.
+- DO NOT run `pnpm dev` or `pnpm build` or `pnpm start` - these are manual commands
 
 ### Database
 
-</create-tech-stack>
+<!-- Run /create-tech-stack to document your database commands -->
+<!-- Example: -->
+<!-- - `pnpm db:generate` - Generate database schema -->
+<!-- - `pnpm db:migrate` - Run database migrations -->
 
 ### Testing
 
-</create-tech-stack>
+<!-- Run /create-tech-stack to document your testing commands -->
+<!-- Example: -->
+<!-- - `pnpm test` - Run all tests -->
 
 ## Development Rules
 
@@ -72,13 +81,13 @@ The @.cursor/rules/ references below tell Claude Code to follow the same rules t
 
 ### Task Management & Workflow
 
-**@.cursor/rules/taskmaster/taskmaster.mdc**
+**`.cursor/rules/taskmaster/taskmaster.mdc`**
 
 - Context: Comprehensive reference for Taskmaster MCP tools and CLI commands
 - Applies to: All task management operations and tagged workflow implementation
 - Tagged task management system with complete tool/command reference
 
-**@.cursor/rules/taskmaster/dev-workflow.mdc**
+**`.cursor/rules/taskmaster/dev-workflow.mdc`**
 
 - Context: Using Taskmaster's tagged task management system in development workflows
 - Applies to: Daily development workflow, feature planning, and task organization

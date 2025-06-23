@@ -1,3 +1,6 @@
+# Allow claude to read these files
+!.*
+
 # Logs
 logs
 *.log
