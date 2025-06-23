@@ -8,7 +8,7 @@ A project template that combines three powerful AI development tools:
 
 - [**Claude Code**](https://docs.anthropic.com/en/docs/claude-code/overview) - Anthropic's CLI for Claude. Requires Pro subscription, or Max for research mode with Opus model
 - [**Task Master**](https://github.com/eyaltoledano/claude-task-master) - Tagged task management system
-- [**Cursor**](https://www.cursor.com/) (optional) - AI-powered IDE with custom rules
+- [**Cursor**](https://www.cursor.com/) - AI-powered IDE for precise code review workflows (optional)
 
 ## Getting Started
 
@@ -83,89 +83,151 @@ You don't need to memorize commands. Simply ask Claude to:
 
 ## Commands
 
-### Initial Setup
+### Planning & Documentation
 
 #### /create-app-design-document
 
-Create high-level application design documentation.
+Creates a comprehensive Application Design Document from codebase analysis.
 
-- **Always asks about project stage first** (Pre-MVP, MVP, Production, Enterprise)
-- Updates project status in CLAUDE.md
-- Focuses on business value and user benefits
+- Analyzes existing codebase for features and architecture
+- Asks 5-8 clarifying questions about project stage and business goals
+- Updates CLAUDE.md Project Status section with development priorities
+- Generates high-level app overview focusing on "what" not "how"
 - Saves to `.taskmaster/docs/app-design-document.md`
 
 #### /create-tech-stack
 
-Document technical implementation details.
+Documents the complete technical stack and development setup.
 
-- Analyzes package.json, configs, and code structure
-- Documents exact versions and dependencies
-- Covers frontend, backend, database, and infrastructure
+- Deep analysis of package.json, configs, and code structure
+- Asks 4-6 questions about deployment, hosting, and workflow
+- Covers languages, frameworks, databases, tools, and infrastructure
+- Includes specific versions, configurations, and setup details
 - Saves to `.taskmaster/docs/tech-stack.md`
-
-### Task Management
 
 #### /prd
 
-Create a Product Requirements Document for new features.
+Creates a detailed Product Requirements Document for a new feature.
 
-- Analyzes existing codebase for context
-- Asks clarifying questions about the feature
-- Creates structured PRD with context and requirements
+- Analyzes existing codebase to understand integration points
+- Asks 4-6 clarifying questions about goals, users, and scope
+- Follows structured format with context and technical sections
+- Written for junior developers with clear, actionable requirements
 - Saves to `.taskmaster/docs/prd-[feature-name].md`
+
+### Task Management
 
 #### /parse
 
-Convert PRD into Task Master tasks.
+Converts a PRD into actionable Task Master tasks.
 
-- Creates new feature tag
-- **Switches to the tag** (critical step)
-- Parses PRD into structured tasks
-- Ready for development with `/next`
+- Creates new feature tag with description
+- Switches to the new tag
+- Parses PRD into structured, dependency-ordered tasks
+- Ready for development workflow with `/next`
 
 #### /next
 
-Get the next available task.
+Shows the next available task in current tag context.
+
+- Finds tasks with satisfied dependencies
+- Displays complete task details and implementation plan
+- Provides summary and suggests first implementation step
+- Respects project's logical development sequence
 
 #### /done
 
-Complete the current task.
+Marks current task as complete and shows next task.
+
+- Reviews task details for completion verification
+- Runs relevant tests if applicable
+- Sets task status to 'done' in Task Master
+- Automatically shows next available task
 
 ### Maintenance & Updates
 
 #### /sync-app-design-document
 
-Update existing app design after changes.
+Updates existing app design document after project changes.
+
+- Asks about project stage changes first
+- Identifies new, changed, or removed features from codebase
+- Preserves accurate existing content, adds new information
+- Updates CLAUDE.md Project Status if stage evolved
+- Maintains high-level, business-focused perspective
 
 #### /sync-tech-stack
 
-Update tech documentation after changes.
+Updates tech documentation after dependency or infrastructure changes.
+
+- Analyzes package.json changes and configuration updates
+- Asks about hosting, deployment, and tooling evolution
+- Updates versions, tools, and technical specifications
+- Preserves accurate content while reflecting current state
+- Maintains technical precision with exact versions
 
 #### /sync-rules
 
-Sync Cursor rules to `CLAUDE.md`.
+Synchronizes Cursor rules to CLAUDE.md Development Rules section.
 
-### Research
+- Scans all `.cursor/rules/*.mdc` files automatically
+- Organizes rules by logical categories
+- Updates references with context and applicability
+- Ensures Claude Code follows same patterns as Cursor
+
+### Development Support
 
 #### /debug
 
-Systematic debugging process.
+Systematic debugging process for complex issues.
 
 #### /architect
 
-Deep architectural planning for complex features.
+Comprehensive system design and architecture planning.
 
 #### /ux
 
-Create UX/UI design documentation.
+Creates comprehensive UX/UI design documentation.
 
 ## Tips
 
+## Claude Code vs Cursor
+
+**Use Claude Code by default** for most development work:
+
+✅ **Better for:**
+
+- Long-term project understanding and context retention
+- All Task Master AI commands
+- Parallel development
+- Cheapest plan for extensive usage of Claude Opus
+
+❌ **Limitations:**
+
+- No chat history persistence between sessions
+- Less granular control over individual file changes
+
+**Switch to Cursor when you need:**
+
+✅ **Granular code review control:**
+
+- Accept/reject specific diffs on a file-by-file basis
+- Visual diff review with inline code navigation
+- Restore points and easy change reversal
+- Complex refactoring requiring careful code inspection
+
+❌ **Limitations:**
+
+- Becomes slow and unstable with long conversations
+- Only supports non-AI Task Master commands
+- Project context management is less efficient than in Claude Code
+- Requires creating new chats frequently
+
 ### Context Management
 
-- Use `/clear` between different tasks to maintain focus
-- Claude automatically reads `CLAUDE.md` for project context
-- Task Master state is preserved across sessions
+- **Claude Code**: Use `/clear` between different tasks to maintain focus
+- **Claude Code**: Automatically reads `CLAUDE.md` for project context
+- **Both tools**: Task Master state is preserved across sessions
 
 ### Quick Commands
 
