@@ -225,11 +225,11 @@ Creates comprehensive UX/UI design documentation.
 
 **Recommended Plans:**
 
-**Claude Pro ($20/month) → Team ($100/month)**
+**Claude Max ($100/month)**
 
-- Start with Pro plan for basic usage
-- **Upgrade to Max (5x - $100/month) for large projects** - much higher usage limits, unlocks Claude Opus model for deeper research
-- Switch to Max (20x - $200/month) if you hit limits frequently
+- Start with Pro plan ($20/month) for basic usage
+- Upgrade to **Max 5x** ($100/month) for serious projects: much higher usage limits, unlocks Claude Opus model for deeper research
+- Upgrade to **Max 20x** ($200/month) if you hit limits frequently. Best value for extensive usage of Claude Opus.
 
 **Cursor Pro ($20/month)**
 
