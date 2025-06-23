@@ -1,93 +1,196 @@
-# .ai
+# dotai
 
-This folder contains AI-assisted development tools for improving code quality and consistency.
+AI-powered development template with Claude Code, Task Master, and Cursor integration.
 
-## How to use?
+## What is this?
 
-- Click on the "Use this template" button
-- Create a `.ai` folder in your repository
-- Move the content of this template into the `.ai` folder
+A project template that combines three powerful AI development tools:
 
-## Codex
+- [**Claude Code**](https://docs.anthropic.com/en/docs/claude-code/overview) - Anthropic's CLI for Claude. Requires Pro subscription, or Max for research mode with Opus model
+- [**Task Master**](https://github.com/eyaltoledano/claude-task-master) - Tagged task management system
+- [**Cursor**](https://www.cursor.com/) (optional) - AI-powered IDE with custom rules
 
-### Files
+## Getting Started
 
-- [codex.md](codex/codex.md): AI Codex - A repository of learnings and errors.
-- [learn.md](codex/learn.md): AI Learn - Protocol for updating the AI Codex.
+### Launch Claude Code
 
-### Usage
+```bash
+claude
+```
 
-1. Review the Codex: [codex.md](codex/codex.md) (silent load, no output)
-2. Update the Codex: [learn.md](codex/learn.md)
+### Create App Design Document
 
-### Important Note
+```bash
+/create-app-design-document
+```
 
-[codex.md](codex/codex.md) should be added to the context of every chat:
+Describe what your app does - its purpose, features, and target users.
 
-- For regular chats: Use the plus button at the top of the chat to add the file.
-- For Composers: Add the file to a Project Composer so all Composers created in that project will automatically have the file.
+### Define Tech Stack
 
-### Structure
+```bash
+/create-tech-stack
+```
 
-The [Codex](codex/codex.md) is divided into two main sections:
+Choose your technologies - framework, database, hosting, etc.
 
-1. Errors: Mistakes made and how to prevent them.
-2. Learnings: Insights gained and their applications.
+### Write Product Requirements
 
-Each entry includes context, description, correction/application, and related entries.
+```bash
+/prd
+```
 
-## Snippets
+Create detailed requirements for your first feature.
 
-Snippets include code templates that AI can use to generate or refactor code. They help in writing shorter prompts for better results.
+### Parse Requirements into Tasks
 
-- [create-snippet.md](snippets/create-snippet.md): Prompt for creating new snippets
+```bash
+/parse
+```
 
-## Session
+Convert your PRD into actionable development tasks.
 
-- [start-session.md](session/start-session.md): Initiates a new AI session
-- [end-session.md](session/end-session.md): Concludes the current AI session
+### Start Development
 
-Session files create a "memory layer" for the AI across multiple interactions, enabling contextual awareness and adaptive assistance.
+```bash
+/next
+```
 
-Key benefits:
+Get your first task and start coding!
 
-- Maintains project context between sessions
-- Reduces repetition of project details
-- Provides consistent guidance aligned with project direction
+### Complete Tasks
 
-Usage:
+```bash
+/done
+```
 
-1. End a session: Use [@end-session](session/end-session.md) command
-2. Start a new session: Use [@start-session](session/start-session.md) command
+Mark tasks complete as you finish them.
 
-The AI will generate and read status files in [status](status) to maintain project continuity.
+## How It Works
 
-## Blueprints
+Claude Code understands your project through:
 
-Blueprints are comprehensive guides for implementing specific technical architectures or project setups. They provide step-by-step instructions for installing, configuring, and integrating various technologies to create a functional foundation for your project.
+- **CLAUDE.md** - Auto-loaded project context and rules
+- **Task Master** - Manages tasks through MCP integration
+- **Natural language** - Just describe what you want to do
 
-- [supabase-drizzle-actions.md](blueprints/supabase-drizzle-actions.md): Backend architecture with Supabase, Drizzle ORM, and Server Actions
-- [flux-with-replicate.md](blueprints/flux-with-replicate.md): Image generation using Flux and Replicate
+You don't need to memorize commands. Simply ask Claude to:
 
-## Libraries
+- "Create a new feature tag for authentication"
+- "Show me the next task"
+- "Mark this task as complete"
+- "What tasks are left in this feature?"
 
-- [lib](lib): Contains documentation examples for library usage
+## Tips
 
-## Plugins
+### Context Management
 
-### v0
+- Use `/clear` between different tasks to maintain focus
+- Claude automatically reads `CLAUDE.md` for project context
+- Task Master state is preserved across sessions
 
-- [v0.dev](https://v0.dev/) is a tool for generating React components from screenshots and chat. Currently, they don't have a Cursor plugin, so you can use [v0](v0/v0.md) bridging prompt.
-- [v0.md](v0/v0.md): Guide for using v0.dev to generate component ideas and prompts
+### Quick Commands
 
-## Rules of AI
+- "What's next?" - Get the next task
+- "Show task 2.1" - View specific task details
+- "Mark as done" - Complete current task
+- "Create auth feature tag" - New feature context
+- "Switch to payments tag" - Change context
 
-[Rules](rules) contains rules for default AI behavior and interaction. These rules are meant to be added to the global "Rules of AI" setting.
+### Custom Commands
 
-## Contributing
+Create your own slash commands by adding them to `.claude/commands/`:
 
-This is an open-source template. Contributions are welcome! Please add a changelog entry with your contribution.
+```bash
+/debug                        # Debug mode
+/architect                    # Architect mode
+/ux                           # UX mode
+```
 
-## Note
+### Multi-task and Multi-feature Development
 
-This system is designed for AI consumption. Entries should prioritize precision and relevance over human readability
+Work on multiple tasks within the same feature or across different features:
+
+```bash
+# Multi-task development (same feature)
+"Show me all tasks in the current tag"
+"Show task 2.1" - Review specific task
+"Mark as done" - Complete task and move to next
+
+# Multi-feature development
+"Switch to the payments tag and show me what's next"
+"Create a new tag for mobile development"
+"Show me all tags with their progress"
+```
+
+### Parallel Development with Git Worktrees
+
+```bash
+# Create worktrees for parallel development
+git worktree add ../project-api feature/api
+git worktree add ../project-components feature/components
+
+# Run Claude Code in each worktree with different tags
+cd ../project-api && claude    # Terminal 1: API work
+cd ../project-components && claude     # Terminal 2: Components work
+```
+
+### Troubleshooting
+
+```bash
+# Check current tag
+"What tag am I on?"
+
+# Fix task file sync
+"Regenerate task files"
+
+# Configure AI models
+task-master models --setup
+```
+
+## Key Files & Project Structure
+
+### Core Files
+
+- `.taskmaster/tasks/tasks.json` - Tagged task database (auto-managed)
+- `.taskmaster/state.json` - Current tag context
+- `.taskmaster/config.json` - AI model configuration
+- `.taskmaster/docs/prd-<tag>.md` - Product Requirements Documents per tag
+- `.taskmaster/tasks/*.md` - Individual task files (auto-generated)
+
+### Claude Code Integration Files
+
+- `CLAUDE.md` - Auto-loaded context for Claude Code
+- `.claude/settings.json` - Claude Code tool allowlist and preferences
+- `.claude/commands/` - Custom slash commands for repeated workflows
+- `.mcp.json` - MCP server configuration
+
+### Directory Structure
+
+```
+project/
+├── .taskmaster/
+│   ├── tasks/              # Tagged task files
+│   │   ├── tasks.json      # Task database
+│   │   ├── task-1.md      # Individual tasks
+│   │   └── task-2.md
+│   ├── docs/              # Documentation
+│   │   ├── app-design-document.md
+│   │   ├── tech-stack.md
+│   │   └── prd-<tag>.md
+│   ├── reports/           # Analysis reports
+│   ├── templates/         # PRD templates
+│   ├── state.json         # Current tag context
+│   └── config.json        # AI models config
+├── .claude/
+│   ├── settings.json      # Claude Code config
+│   └── commands/         # Custom commands
+├── .cursor/              # Cursor IDE rules
+│   └── rules/           # Coding standards
+├── .mcp.json            # MCP configuration
+└── CLAUDE.md            # Project context
+```
+
+## License
+
+MIT
