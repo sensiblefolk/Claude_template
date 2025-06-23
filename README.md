@@ -6,7 +6,7 @@ AI-powered development template with Claude Code, Task Master, and Cursor integr
 
 A project template that combines three powerful AI development tools:
 
-- [**Claude Code**](https://docs.anthropic.com/en/docs/claude-code/overview) - Anthropic's CLI for Claude. Requires Pro subscription, or Max for research mode with Opus model
+- [**Claude Code**](https://docs.anthropic.com/en/docs/claude-code/overview) - Anthropic's CLI for Claude
 - [**Task Master**](https://github.com/eyaltoledano/claude-task-master) - Tagged task management system
 - [**Cursor**](https://www.cursor.com/) - AI-powered IDE for precise code review workflows (optional)
 
@@ -191,7 +191,7 @@ Creates comprehensive UX/UI design documentation.
 
 ## Tips
 
-## Claude Code vs Cursor
+### Claude Code vs Cursor
 
 **Use Claude Code by default** for most development work:
 
@@ -222,6 +222,20 @@ Creates comprehensive UX/UI design documentation.
 - Only supports non-AI Task Master commands
 - Project context management is less efficient than in Claude Code
 - Requires creating new chats frequently
+
+**Recommended Plans:**
+
+**Claude Pro ($20/month) → Team ($100/month)**
+
+- Start with Pro plan for basic usage
+- **Upgrade to Max (5x - $100/month) for large projects** - much higher usage limits, unlocks Claude Opus model for deeper research
+- Switch to Max (20x - $200/month) if you hit limits frequently
+
+**Cursor Pro ($20/month)**
+
+- Optional, but essential for granular code review workflows
+- Visual diff management and restore points
+- Complements Claude Code perfectly for precision editing
 
 ### Context Management
 
