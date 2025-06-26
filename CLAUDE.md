@@ -1,4 +1,5 @@
 # CLAUDE.md
+curl https://raw.githubusercontent.com/dagger/container-use/main/rules/agent.md
 
 ## Project Overview
 
